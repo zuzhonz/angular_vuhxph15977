@@ -1,0 +1,38 @@
+<style>
+    .title {
+        margin-left: 450px;
+        margin-right: 450px;
+    }
+    
+    a {
+        text-decoration: none;
+    }
+    
+    a:hover {
+        color: red;
+    }
+</style>
+<div class="container">
+    <div class="title">
+        <h3> Quizz Web </h3>
+    </div>
+</div>
+<div class="container  mt-2 ">
+    <div class="row mb-3">
+        <div class="col-md-6 mt-2" *ngFor="let item of subject ">
+            <a [routerLink]="'/quiz/'+item.Code">
+                <div class="d-flex flex-row border">
+                    <div class="p-0 w-20 mt-2">
+                        <img [src]="'/assets/logos/logos/'+item.Logo" class="img-thumbnail border-0" width="210px" height="400px" />
+                    </div>
+                    <div class="pl-3 pt-2 pr-2 pb-2 w-75 border-left">
+                        <h4 class="text-primary">{{ item.Name }}</h4>
+                        <h5 class="text-info">{{item.Code}}</h5>
+                        <p class="text-right m-0"><a [routerLink]="'/quiz/'+item.Code" class="btn btn-primary"><i
+                                    class="far fa-user"></i> View </a></p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

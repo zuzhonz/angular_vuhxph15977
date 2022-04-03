@@ -1,0 +1,39 @@
+<style>
+    .button a {
+        margin: 10px;
+    }
+</style>
+
+
+
+<div class="row">
+    <div class="input-group m-2">
+        <div class="form-outline">
+            <input type="search" id="form1" placeholder="Search quizz ..." (keyup)="search($event)" class="form-control" />
+        </div>
+    </div>
+    <div class="created">
+
+
+    </div>
+
+    <div class="card border-primary m-2 mb-3 col-md-5" *ngFor="let q of quiz,let i = index">
+        <div class="card-header">Câu {{i+1}} </div>
+        <div class="card-body">
+            <h5 class="card-title">{{q.Text}}</h5>
+            <div class="card-text" *ngFor="let a of q.Answers">
+                <div class="card-text">
+                    <div class="form-check">
+                        <input class="form-check-input" [value]="a.Id" type="radio" [name]="q.Id" [checked]="q.AnswerId == a.Id" id="flexRadioDisabled" di>
+                        <h6 class="form-check-label" [style]=" q.AnswerId == a.Id  ? 'color:green' : '' " for="flexRadioDisabled">{{a.Text}}</h6>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="button">
+            <a href="" class="btn btn-primary">Edit</a>
+            <a href="" class="btn btn-danger">Delete</a>
+        </div>
+    </div>

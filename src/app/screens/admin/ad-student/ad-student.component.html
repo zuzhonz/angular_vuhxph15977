@@ -1,0 +1,68 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+<style>
+    .passH {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        column-gap: 10px;
+    }
+    
+    .passH input {
+        border: none;
+    }
+    
+    th {
+        text-align: center
+    }
+    
+    .action a {
+        margin: 10px;
+    }
+</style>
+<div class="container m-2">
+    <div class="input-group m-2">
+        <div class="form-outline">
+            <input type="search" id="form1" placeholder="Search student email ..." (keyup)="search($event)" class="form-control" />
+        </div>
+
+    </div>
+</div>
+<div class="container m-3">
+    <table class="table table-bordered">
+        <thead class="thead-dark ">
+            <tr>
+                <th>Stt</th>
+                <th>User Name </th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th width="230px"> Password</th>
+                <th>Gender</th>
+                <th>Birth Date</th>
+                <th>School fee</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let stu of student,let i = index">
+            <tr>
+                <th scope="row">{{i+1}}</th>
+                <td>{{stu.username}}</td>
+                <td>{{stu.fullname}}</td>
+                <td>{{stu.email}}</td>
+                <td class="passH" width="230px">
+                    <div> <input [value]="stu.password" [type]="showPass ? 'text' : 'password'" disabled /></div>
+                    <div>
+                        <a (click)="password()" *ngIf="showPass== false"> <i class="fa-solid fa-eye"></i> </a>
+                        <a (click)="password()" *ngIf="showPass "> <i class="fa-solid fa-eye-slash"></i> </a>
+                    </div>
+                </td>
+                <td>{{stu.gender | getGender}}</td>
+                <td>{{stu.birthday | date : "dd/MM/YYYY" }}</td>
+                <td>{{stu.schoolfee | getMoney }}</td>
+                <td class="action">
+                    <a class="btn btn-primary"> Edit</a>
+                    <a class="btn btn-danger"> Delete </a>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>

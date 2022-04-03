@@ -1,0 +1,59 @@
+<div class="container-fluid">
+    <div class="col-6 offset-3">
+        <h3 class="text-center">Đăng nhập</h3>
+        {{sigupForm.value | json}}
+        <h5> trạng thái: {{sigupForm.valid | json }} </h5>
+        <form [formGroup]="sigupForm" (ngSubmit)="dataUser()">
+            <div class="form-group">
+                <label for="">Name</label>
+                <input type="text" formControlName="name" class="form-control">
+            </div>
+            <span class="text-danger" *ngIf="sigupForm.controls['name'].hasError('required') && sigupForm.controls['name'].touched">Không để trống Name </span>
+            <span class="text-danger" *ngIf="sigupForm.controls['name'].hasError('minlength') ">Name phải ít nhất 5 ký tự</span>
+
+            <div class="form-group">
+                <label for="">Email</label>
+                <input type="text" formControlName="email" class="form-control">
+            </div>
+            <span class="text-danger" *ngIf="sigupForm.controls['email'].hasError('required') && sigupForm.controls['email'].touched "> Không để trống email </span>
+            <span class="text-danger" *ngIf="sigupForm.controls['email'].hasError('email') ">Không đúng định dạng </span>
+
+
+            <div class="form-group">
+                <label for="">Password</label>
+                <input type="text" formControlName="password" class="form-control">
+            </div>
+            <span class="text-danger" *ngIf="sigupForm.controls['password'].hasError('required') && sigupForm.controls['password'].touched "> Không để trống password </span>
+            <span class="text-danger" *ngIf="sigupForm.controls['password'].hasError('minlength') ">pass phải ít nhất 6 ký tự</span>
+            <div class="form-group">
+                <label for=""> confirm password </label>
+                <input type="text" formControlName="confirmPassword" class="form-control">
+            </div>
+            <span class="text-danger" *ngIf="sigupForm.controls['confirmPassword'].hasError('required') && sigupForm.controls['confirmPassword'].touched ">  nhập lại password </span>
+            <span class="text-danger" *ngIf="sigupForm.controls['confirmPassword'].value !== sigupForm.controls['password'].value ">  nhập đúng với password </span>
+
+
+            <div class="form-group">
+                <label for=""> birth Date </label>
+                <input type="date" formControlName="birthDate" class="form-control">
+            </div>
+            <span class="text-danger" *ngIf="sigupForm.controls['birthDate'].hasError('required') && sigupForm.controls['birthDate'].touched ">  Không để trống ngày sinh </span>
+
+
+
+            <div class="form-group">
+                <label for=""> Address </label>
+                <input type="text" formControlName="address" class="form-control">
+            </div>
+            <span class="text-danger" *ngIf="sigupForm.controls['address'].hasError('required') && sigupForm.controls['address'].touched "> Không để trống địa chỉ </span>
+
+
+
+
+
+            <div class="d-flex justify-content-left mt-3">
+                <button type="submit" [disabled]="sigupForm.invalid" class="btn btn-primary">Đăng nhập</button>
+            </div>
+        </form>
+    </div>
+</div>

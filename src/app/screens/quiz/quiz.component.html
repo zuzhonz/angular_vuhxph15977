@@ -1,0 +1,37 @@
+<style>
+    .answer a {
+        margin: 10%
+    }
+</style>
+
+<div class="container mb-3 ">
+    <div class="ml-8">
+        <h3> Làm Quiz </h3>
+    </div>
+    <div class="row" *ngFor="let item of quiz,let i=index">
+        <div class="col-md-9 mt-2 mb-2">
+            <div class="d-flex flex-row border rounded">
+
+                <div class="row p-5">
+                    <h4 class="text-primary "> Câu {{i+1}}: {{ item.Text }}</h4>
+                    <h5 class="text-info">{{item.Code}}</h5>
+                    <div class="row">
+                        <div class="answer col-md-6 " *ngFor="let answer of item.Answers ">
+
+                            <div class="form-check">
+                                <input class="form-check-input" (change)="choose(item.Id,answer.Id);" (click)="hi($event)" type="radio" [name]="item.Id" [id]="answer.Id">
+                                <label class="form-check-label" for="flexRadioDisabled">
+                                   {{answer.Text}}
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <button (click)="submit()" class="btn btn-primary">Check</button>
+
+</div>

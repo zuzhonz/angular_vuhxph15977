@@ -1,0 +1,18 @@
+<style>
+    img {
+        max-height: 221px;
+        max-width: 221px;
+        margin: 0 auto;
+    }
+</style>
+<div class="row  mt-2">
+    <div class="card col-md-3 m-2" *ngFor="let sub of subject">
+        <img class="mt-1" [src]="'assets/logos/logos/'+sub.Logo">
+        <div class="card-body">
+            <h5 class="card-title">{{sub.Name}}</h5>
+            <p class="card-text">{{sub.Code}}</p>
+
+        </div>
+        <a [routerLink]="'quiz/'+sub.Code" class="btn btn-primary ">Go Quiz</a>
+    </div>
+</div>

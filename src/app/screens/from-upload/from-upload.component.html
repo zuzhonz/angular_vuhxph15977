@@ -1,0 +1,5 @@
+<p>from-upload works!</p>
+<img [src]="uploadFile" width="200" *ngIf="uploadFile.length > 0">
+
+<input type="file" (change)="chooseFile($event)" id="">
+<!-- <input type="file" (change)="chooseFile($event)" id=""> -->
