@@ -17,4 +17,12 @@ export class AdSubjectComponent implements OnInit {
     })
   }
 
+  search(e: any){
+      let keyword = e.target.value
+
+      this.SubjectService.search(keyword).subscribe(data=>{
+         this.subject = data
+      })
+  }
+
 }

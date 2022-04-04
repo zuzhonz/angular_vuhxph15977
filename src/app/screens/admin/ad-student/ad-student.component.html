@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 <style>
     .passH {
         display: flex !important;
@@ -32,31 +31,29 @@
             <tr>
                 <th>Stt</th>
                 <th>User Name </th>
-                <th>Full Name</th>
                 <th>Email</th>
-                <th width="230px"> Password</th>
-                <th>Gender</th>
+                <th width="230px">googleId</th>
+                <!-- <th>Gender</th>
                 <th>Birth Date</th>
-                <th>School fee</th>
+                <th>School fee</th> -->
                 <th>Action</th>
             </tr>
         </thead>
         <tbody *ngFor="let stu of student,let i = index">
             <tr>
                 <th scope="row">{{i+1}}</th>
-                <td>{{stu.username}}</td>
-                <td>{{stu.fullname}}</td>
+                <td>{{stu.name}}</td>
                 <td>{{stu.email}}</td>
                 <td class="passH" width="230px">
-                    <div> <input [value]="stu.password" [type]="showPass ? 'text' : 'password'" disabled /></div>
+                    <div> <input [value]="stu.googleId" [type]="showPass ? 'text' : 'password'" disabled /></div>
                     <div>
                         <a (click)="password()" *ngIf="showPass== false"> <i class="fa-solid fa-eye"></i> </a>
                         <a (click)="password()" *ngIf="showPass "> <i class="fa-solid fa-eye-slash"></i> </a>
                     </div>
                 </td>
-                <td>{{stu.gender | getGender}}</td>
+                <!-- <td>{{stu.gender | getGender}}</td>
                 <td>{{stu.birthday | date : "dd/MM/YYYY" }}</td>
-                <td>{{stu.schoolfee | getMoney }}</td>
+                <td>{{stu.schoolfee | getMoney }}</td> -->
                 <td class="action">
                     <a class="btn btn-primary"> Edit</a>
                     <a class="btn btn-danger"> Delete </a>

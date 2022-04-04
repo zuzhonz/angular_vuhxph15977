@@ -1,3 +1,4 @@
+import { CanActiveGuard } from './helpers/can-active.guard';
 import { AdHomeComponent } from './screens/admin/ad-home/ad-home.component';
 import { SigupComponent } from './screens/sigup/sigup.component';
 import { LoginComponent } from './screens/login/login.component';
@@ -22,7 +23,7 @@ const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'subject', component: SubjectComponent },
       { path: 'student', component: StudentComponent },
-      { path: 'quiz/:code', component: QuizComponent },
+      { path: 'quiz/:code', component: QuizComponent , canActivate: [CanActiveGuard]},
     ],
   },
   { path: 'login', component: LoginComponent },

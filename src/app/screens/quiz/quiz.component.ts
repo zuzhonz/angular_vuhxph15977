@@ -15,6 +15,9 @@ export class QuizComponent implements OnInit {
 
   quiz: Array<any> = [];
   user_quiz: Array<any> = [];
+
+  score : number = 0;
+  // isScore : boolean = false;
   
 
   constructor(
@@ -69,7 +72,7 @@ export class QuizComponent implements OnInit {
 
     // tính  điểm của mỗi câu hỏi so với số câu hỏi 
     const score = (correctAnswers*10/this.quiz.length)
-
+    this.score = score
     // console.log(score);
 
     

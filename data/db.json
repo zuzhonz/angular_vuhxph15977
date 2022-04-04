@@ -1,14 +1,29 @@
 {
     "students": [{
-        "id": 1,
-        "name": "Hoàng Xuân Vũ",
-        "googleId": "100686981343131313000",
-        "email": "vuhxph15977@fpt.edu.vn",
-        "avatar": "https://lh3.googleusercontent.com/a-/AOh14Ggve6mDDEQ-u1F8e__TeU1s2V7-L5KIOp_pUKjBuA=s96-c",
-        "marks": {
-            "LAYO": "3.00"
+            "id": 1,
+            "name": "Hoàng Xuân Vũ",
+            "googleId": "100686981343131313000",
+            "email": "vuhxph15977@fpt.edu.vn",
+            "avatar": "https://lh3.googleusercontent.com/a-/AOh14Ggve6mDDEQ-u1F8e__TeU1s2V7-L5KIOp_pUKjBuA=s96-c",
+            "marks": {
+                "LAYO": "3.00"
+            },
+            "roles": [{ "name": "admin" },
+                {
+                    "name": "member"
+                }
+            ]
+        },
+        {
+            "name": "Vũ Hoàng",
+            "googleId": "106031313524275745254",
+            "email": "skyhoangvu248@gmail.com",
+            "avatar": "https://lh3.googleusercontent.com/a/AATXAJz6QsSkgXeaEoQHceQN08KQK3-BYWrb74yp2uJA=s96-c",
+            "marks": {},
+            "id": 2,
+            "roles": [{ "name": "member" }]
         }
-    }],
+    ],
     "subjects": [{
             "id": 1,
             "Code": "ADAV",

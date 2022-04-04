@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+// import * as feather from 'feather-icons';
+
 
 @Component({
   selector: 'app-admin-layout',
@@ -6,11 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-layout.component.css']
 })
 
+
+
 export class AdminLayoutComponent implements OnInit {
+  
 
   constructor() { }
 
   ngOnInit(): void {
+    // feather.replace();
   }
 
 }

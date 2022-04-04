@@ -6,6 +6,12 @@
     }
 </style>
 <div class="row  mt-2">
+    <div class="input-group m-2">
+        <div class="form-outline">
+            <input type="search" id="form1" placeholder="Search quizz ..." (keyup)="search($event)" class="form-control" />
+        </div>
+    </div>
+
     <div class="card col-md-3 m-2" *ngFor="let sub of subject">
         <img class="mt-1" [src]="'assets/logos/logos/'+sub.Logo">
         <div class="card-body">

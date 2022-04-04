@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
 import { AuthService } from 'src/app/services/auth.service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'app-login',
@@ -34,20 +35,33 @@ export class LoginComponent implements OnInit {
     this.socialAuthService
       .signIn(GoogleLoginProvider.PROVIDER_ID)
       .then((authData) => {
-        let data = {
-          name: authData.name,
-          googleId: authData.id,
-          email: authData.email,
-          avatar: authData.photoUrl,
-          marks: {
+        this.authService
+          .login(authData.email, authData.id).subscribe((data) => {
+            console.log(data);
             
-          },
-        };
-          console.log(data);
-          
-        // this.authService.add(data)
+            if (data == null) {
+              let datas = {
+                name: authData.name,
+                googleId: authData.id,
+                email: authData.email,
+                avatar: authData.photoUrl,
+                marks: {},
+              };
+              this.authService.add(datas).subscribe((response) => {
+                if (response) {
+                  alert('đăng ký thành công');
+                }
+              });
+
+            } 
+            if(data){
+               alert('tài khoản đã tồn tại')
+            }
+          });
       });
-  }
+  } 
+
+ 
 
   gg_login() {
     this.socialAuthService

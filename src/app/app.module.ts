@@ -5,13 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 
 //import gg login
 import { SocialLoginModule,SocialAuthServiceConfig } from 'angularx-social-login';
-import {
-  GoogleLoginProvider,
-  FacebookLoginProvider
-} from 'angularx-social-login';
+import { GoogleLoginProvider} from 'angularx-social-login';
 
 
 //import firebase 
@@ -27,9 +25,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SigupComponent } from './screens/sigup/sigup.component';
 import { AdminLayoutComponent } from './layout/admin-layout/admin-layout.component';
 import { StudentComponent } from './screens/student/student.component';
-import { GetGenderPipe } from './helpers/gender/get-gender.pipe';
-import { GetMoneyPipe } from './helpers/money/get-money.pipe';
-import { GetAgePipe } from './helpers/age/get-age.pipe';
 import { AdStudentComponent } from './screens/admin/ad-student/ad-student.component';
 import { AdSubjectComponent } from './screens/admin/ad-subject/ad-subject.component';
 import { AdQuizComponent } from './screens/admin/ad-quiz/ad-quiz.component';
@@ -53,9 +48,7 @@ import { FromUploadComponent } from './screens/from-upload/from-upload.component
     SigupComponent,
     StudentComponent,
     //pipe declarations
-    GetGenderPipe,
-    GetMoneyPipe,
-    GetAgePipe,
+    
     // end pipe declarations
 
     //admin declarations 
@@ -67,11 +60,14 @@ import { FromUploadComponent } from './screens/from-upload/from-upload.component
     FromUploadComponent,
   ],
   imports: [
+    
     BrowserModule,
-    // routing modules 
     AppRoutingModule,
-    //bootstrap modules
+
+    //bootstrap and icon modules
+    FontAwesomeModule,
     NgbModule,
+
     // HttpModule api
     HttpClientModule,
 

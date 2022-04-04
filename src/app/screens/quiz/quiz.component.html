@@ -8,6 +8,9 @@
     <div class="ml-8">
         <h3> Làm Quiz </h3>
     </div>
+    <div *ngIf="score" class="alert alert-success col-md-9" role="alert">
+        kết quả của bạn là {{score}} / 10
+    </div>
     <div class="row" *ngFor="let item of quiz,let i=index">
         <div class="col-md-9 mt-2 mb-2">
             <div class="d-flex flex-row border rounded">

@@ -1,5 +1,5 @@
+import { SubjectService } from './../../services/subject.service';
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -10,10 +10,10 @@ import { HttpClient } from '@angular/common/http';
 export class SubjectComponent implements OnInit {
 
   subject : Array<any> = [];
-  constructor(private http: HttpClient ) { }
+  constructor(private SubjectService: SubjectService  ) { }
 
   ngOnInit(): void {
-     this.http.get<any>("http://localhost:3000/subjects")
+     this.SubjectService.list()
       .subscribe(data =>{
             this.subject = data;
       });
