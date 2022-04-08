@@ -33,6 +33,7 @@ import { HomeComponent } from './screens/home/home.component';
 // import environment 
 import { environment } from 'src/environments/environment';
 import { FromUploadComponent } from './screens/from-upload/from-upload.component';
+import { FormComponent } from './screens/admin/ad-quiz/form/form.component';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { FromUploadComponent } from './screens/from-upload/from-upload.component
     AdHomeComponent,
     HomeComponent,
     FromUploadComponent,
+    FormComponent,
   ],
   imports: [
     

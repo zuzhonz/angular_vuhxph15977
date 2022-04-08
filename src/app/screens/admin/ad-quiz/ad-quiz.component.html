@@ -13,8 +13,7 @@
         </div>
     </div>
     <div class="created">
-
-
+        <a class="btn btn-success" [routerLink]="'/admin/form/'+code"> thêm quiz </a>
     </div>
 
     <div class="card border-primary m-2 mb-3 col-md-5" *ngFor="let q of quiz,let i = index">
@@ -24,8 +23,8 @@
             <div class="card-text" *ngFor="let a of q.Answers">
                 <div class="card-text">
                     <div class="form-check">
-                        <input class="form-check-input" [value]="a.Id" type="radio" [name]="q.Id" [checked]="q.AnswerId == a.Id" id="flexRadioDisabled" di>
-                        <h6 class="form-check-label" [style]=" q.AnswerId == a.Id  ? 'color:green' : '' " for="flexRadioDisabled">{{a.Text}}</h6>
+                        <input class="form-check-input" [value]="a.Id" type="radio" [name]="q.id" [checked]="q.AnswerId == a.id" id="flexRadioDisabled" di>
+                        <h6 class="form-check-label" [style]=" q.AnswerId == a.id  ? 'color:green' : '' " for="flexRadioDisabled">{{a.Text}}</h6>
                     </div>
                 </div>
             </div>

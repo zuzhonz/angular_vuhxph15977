@@ -17,4 +17,8 @@ export class QuizService {
   search(keyword:any,code:any): Observable<any>{
     return this.http.get<any>(`${environment.Base_api+code}?Text_like=${keyword}`)
   }
+   
+  addQuiz(data:any,code:any): Observable<any>{
+    return this.http.post<any>(`${environment.Base_api + code}`, data)
+  }
 }

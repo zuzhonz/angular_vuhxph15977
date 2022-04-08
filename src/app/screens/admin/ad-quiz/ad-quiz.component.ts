@@ -10,6 +10,7 @@ import { QuizService } from 'src/app/services/quiz.service';
 export class AdQuizComponent implements OnInit {
 
   quiz: Array<any> = [];
+  code : any = null
   
 
   constructor(
@@ -19,6 +20,7 @@ export class AdQuizComponent implements OnInit {
   
   ngOnInit() {
      let code = this.route.snapshot.paramMap.get('code');
+     this.code = code
      this.QuizService.list(code)
      .subscribe(data =>{
        this.quiz = data      

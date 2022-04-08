@@ -43,8 +43,6 @@ export class SigupComponent implements OnInit {
      
   } 
   dataUser(){
-    this.http.post
-    this.sigupForm.value 
     console.log(this.sigupForm.value);
   }
   

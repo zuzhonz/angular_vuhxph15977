@@ -46,6 +46,9 @@ export class LoginComponent implements OnInit {
                 email: authData.email,
                 avatar: authData.photoUrl,
                 marks: {},
+                roles : [
+                   "member"
+                ]
               };
               this.authService.add(datas).subscribe((response) => {
                 if (response) {

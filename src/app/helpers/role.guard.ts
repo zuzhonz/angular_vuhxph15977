@@ -8,9 +8,15 @@ import { Observable } from 'rxjs';
 export class RoleGuard implements CanActivate {
   constructor(private router: Router){}
 
-  canActivate(): boolean{
-    return  true
-    
+  canActivate(): boolean {
+    const loggedInUser = JSON.parse(localStorage.getItem('login_user') || "{}");
+    if(loggedInUser.roles == 'member'){
+        this.router.navigate(['/']);
+        alert('You have not admin ')
+        return false;
+      }
+    return true;
+
   }
   
 }

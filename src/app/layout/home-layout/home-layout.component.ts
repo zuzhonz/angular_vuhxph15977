@@ -18,14 +18,21 @@ export class HomeLayoutComponent implements OnInit {
     this.auth.logginUser.subscribe(user => {
       if(user.email != undefined && user.googleId != undefined){
         this.isLoggedIn = true;
-        this.loggedInUser = user;
+        this.loggedInUser = user  
+        
+        
       }
+    
+      
     })
   }
 
   logout(){
     this.auth.logout()
-    // this.router.navigate(['/login'])
+  } 
+
+  h3(){
+    
   }
 
 }

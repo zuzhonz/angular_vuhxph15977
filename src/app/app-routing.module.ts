@@ -1,3 +1,4 @@
+import { RoleGuard } from './helpers/role.guard';
 import { CanActiveGuard } from './helpers/can-active.guard';
 import { AdHomeComponent } from './screens/admin/ad-home/ad-home.component';
 import { SigupComponent } from './screens/sigup/sigup.component';
@@ -14,6 +15,7 @@ import { AdStudentComponent } from './screens/admin/ad-student/ad-student.compon
 import { AdSubjectComponent } from './screens/admin/ad-subject/ad-subject.component';
 import { AdQuizComponent } from './screens/admin/ad-quiz/ad-quiz.component';
 import { FromUploadComponent } from './screens/from-upload/from-upload.component';
+import { FormComponent } from './screens/admin/ad-quiz/form/form.component';
 
 const routes: Routes = [
   {
@@ -31,11 +33,13 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminLayoutComponent,
+    canActivate : [CanActiveGuard,RoleGuard],
     children: [
       { path: '', component: AdHomeComponent },
       { path: 'student', component: AdStudentComponent },
       { path: 'subject', component: AdSubjectComponent },
       { path: 'subject/quiz/:code', component: AdQuizComponent },
+      { path: 'form/:code', component: FormComponent },
     ],
   },
   { path: 'upload', component: FromUploadComponent }
