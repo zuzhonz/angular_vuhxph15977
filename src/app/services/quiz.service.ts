@@ -22,5 +22,7 @@ export class QuizService {
     return this.http.post<any>(`${environment.Base_api + code}`, data)
   }
 
-  // delete()
+  delete(id:Number,code:any): Observable<any>{
+     return this.http.delete<any>(`${environment.Base_api+code}/${id}`)
+  }
 }

@@ -37907,66 +37907,6 @@
           "Text": "Lưu trữ những thông tin bổ sung về file hay đối tượng đa phương tiện trong web"
         }
       ]
-    },
-    {
-      "Text": "dfdgdfg",
-      "Marks": 1,
-      "AnswerId": 937419,
-      "Answers": [
-        {
-          "id": 493917,
-          "Text": "zfzdgdxgxfgf"
-        },
-        {
-          "id": 937419,
-          "Text": "sdgdrgdrfghdf"
-        }
-      ],
-      "id": 25660
-    },
-    {
-      "Text": "1+1 = ?",
-      "Marks": 1,
-      "AnswerId": 49624,
-      "Answers": [
-        {
-          "id": 49624,
-          "Text": "2"
-        },
-        {
-          "id": 235596,
-          "Text": "3"
-        }
-      ],
-      "id": 25661
-    },
-    {
-      "Text": "",
-      "Marks": "",
-      "AnswerId": null,
-      "Answers": [],
-      "id": 25662
-    },
-    {
-      "Text": "",
-      "Marks": "",
-      "AnswerId": null,
-      "Answers": [],
-      "id": 25663
-    },
-    {
-      "Text": "",
-      "Marks": "",
-      "AnswerId": null,
-      "Answers": [],
-      "id": 25664
-    },
-    {
-      "Text": "",
-      "Marks": "",
-      "AnswerId": null,
-      "Answers": [],
-      "id": 25665
     }
   ]
 }

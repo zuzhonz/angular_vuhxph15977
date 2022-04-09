@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { QuizService } from 'src/app/services/quiz.service';
 
 @Component({
@@ -15,7 +15,8 @@ export class AdQuizComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private QuizService: QuizService
+    private QuizService: QuizService,
+    private router: Router
     ) {}
   
   ngOnInit() {
@@ -36,6 +37,19 @@ export class AdQuizComponent implements OnInit {
      this.QuizService.search(keyword,code).subscribe(data =>{
         this.quiz = data
      })  
+  }
+
+  delquiz(id:number){
+    let code = this.route.snapshot.paramMap.get('code');
+
+    if(confirm("Are you sure to delete quizz ")){
+      this.QuizService.delete(id, code).subscribe(data =>{
+        alert('Quiz deleted successfully')
+        window.location.reload()
+     })
+    }
+    
+      
   }
  
 
