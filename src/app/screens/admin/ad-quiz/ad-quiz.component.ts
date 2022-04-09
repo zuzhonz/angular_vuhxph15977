@@ -37,6 +37,7 @@ export class AdQuizComponent implements OnInit {
         this.quiz = data
      })  
   }
+ 
 
   
 
