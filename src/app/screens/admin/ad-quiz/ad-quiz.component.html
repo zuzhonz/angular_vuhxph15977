@@ -28,11 +28,9 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
         <div class="button">
-            <a href="" class="btn btn-primary">Edit</a>
+            <a [routerLink]="'/admin/form/'+code+'/'+q.id" class="btn btn-primary">Edit</a>
             <a (click)="delquiz(q.id)" class="btn btn-danger">Delete</a>
         </div>
     </div>

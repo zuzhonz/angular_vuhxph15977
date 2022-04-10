@@ -1,3 +1,4 @@
+import { map } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import {
   FormGroup,
@@ -23,17 +24,49 @@ export class FormComponent implements OnInit {
     private router: Router
   ) {}
   customerInfo: any = FormGroup;
-  load: any = true;
+  ans: any = this.fb.group;
+  code: any = this.route.snapshot.paramMap.get('code');
+  id: any = this.route.snapshot.paramMap.get('id');
 
   ngOnInit() {
-    this.customerInfo = this.fb.group({
-      Text: new FormControl(''),
-      Marks: new FormControl('', []),
-      AnswerId: new FormControl(),
-      Answers: this.fb.array([]),
-    });
-  }
+    let id = this.id;
+    let code = this.code;
+    if (id != null) {
+      this.QuizService.question(id, code).subscribe((data) => {
+        data.Answers.map((res: any) => {
+           if(data.AnswerId == res.id){
+            this.ans = this.fb.group({
+              id: new FormControl(res.id),
+              Text: new FormControl(res.Text),
+            })
+           }
+        });
+       
 
+        this.customerInfo = this.fb.group({
+          id: new FormControl(data.id),
+          Text: new FormControl(data.Text, [
+            Validators.required,
+            Validators.minLength(4),
+          ]),
+          Marks: new FormControl(data.Marks, [Validators.required]),
+          AnswerId: new FormControl(data.AnswerId, [Validators.required]),
+          Answers: this.fb.array([this.ans], [Validators.required]),
+        });
+      });
+    }
+
+
+    // form data question 
+    this.customerInfo = this.fb.group({
+      Text: new FormControl('', [Validators.required, Validators.minLength(4)]),
+      Marks: new FormControl('', [Validators.required]),
+      AnswerId: new FormControl('', [Validators.required]),
+      Answers: this.fb.array([],[Validators.required]),
+    });
+
+  }
+  // thêm đáp án cho câu hỏi 
   addAnswer(Text = '') {
     //random id answer
     let randomId = require('random-id');
@@ -46,24 +79,21 @@ export class FormComponent implements OnInit {
     Answers.push(
       this.fb.group({
         id: [Number(i)],
-        Text: [Text],
+        Text: [Text, [Validators.required]],
       })
     );
   }
 
   delAnswer(i: Number) {
-    let answers = this.customerInfo.get('Answers')
+    //xóa câu hỏi
+    let answers = this.customerInfo.get('Answers');
     answers.removeAt(i);
   }
 
   createCustomerInfo() {
     // gán object vào một biến
     let data = this.customerInfo.value;
-    // get code từ url
-    let code = this.route.snapshot.paramMap.get('code');
-
-    console.log(data);
-    
+    let code = this.code;
     //post dữ liệu vào data
     this.QuizService.addQuiz(data, code).subscribe((response) => {
       alert('thêm thành công');

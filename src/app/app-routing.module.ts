@@ -40,6 +40,7 @@ const routes: Routes = [
       { path: 'subject', component: AdSubjectComponent },
       { path: 'subject/quiz/:code', component: AdQuizComponent },
       { path: 'form/:code', component: FormComponent },
+      { path: 'form/:code/:id', component: FormComponent },
     ],
   },
   { path: 'upload', component: FromUploadComponent }
