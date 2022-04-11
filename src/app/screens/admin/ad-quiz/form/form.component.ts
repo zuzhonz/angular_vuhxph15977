@@ -23,7 +23,15 @@ export class FormComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) {}
-  customerInfo: any = FormGroup;
+
+  customerInfo: any = this.fb.group({
+    id: new FormControl(),
+    Text: new FormControl('', [Validators.required, Validators.minLength(4)]),
+    Marks: new FormControl('', [Validators.required]),
+    AnswerId: new FormControl('', [Validators.required]),
+    Answers: this.fb.array([], [Validators.required]),
+  });
+
   ans: any = this.fb.group;
   code: any = this.route.snapshot.paramMap.get('code');
   id: any = this.route.snapshot.paramMap.get('id');
@@ -31,42 +39,30 @@ export class FormComponent implements OnInit {
   ngOnInit() {
     let id = this.id;
     let code = this.code;
+
     if (id != null) {
       this.QuizService.question(id, code).subscribe((data) => {
-        data.Answers.map((res: any) => {
-           if(data.AnswerId == res.id){
-            this.ans = this.fb.group({
-              id: new FormControl(res.id),
-              Text: new FormControl(res.Text),
-            })
-           }
-        });
-       
+        // trả về dữ Text,Marks AnswerId
+        this.customerInfo.get('id').setValue(data.id);
 
-        this.customerInfo = this.fb.group({
-          id: new FormControl(data.id),
-          Text: new FormControl(data.Text, [
-            Validators.required,
-            Validators.minLength(4),
-          ]),
-          Marks: new FormControl(data.Marks, [Validators.required]),
-          AnswerId: new FormControl(data.AnswerId, [Validators.required]),
-          Answers: this.fb.array([this.ans], [Validators.required]),
+        this.customerInfo.get('Text').setValue(data.Text);
+        this.customerInfo.get('Marks').setValue(data.Marks);
+        this.customerInfo.get('AnswerId').setValue(data.AnswerId);
+        // trả về dữ liệu câu hỏi
+        const grAns = this.customerInfo.controls.Answers as FormArray;
+        data.Answers.forEach((item: any, index: any) => {
+          grAns.push(
+            this.fb.group({
+              id: new FormControl(item.id, [Validators.required]),
+              Text: new FormControl(item.Text, [Validators.required]),
+            })
+          );
         });
       });
     }
-
-
-    // form data question 
-    this.customerInfo = this.fb.group({
-      Text: new FormControl('', [Validators.required, Validators.minLength(4)]),
-      Marks: new FormControl('', [Validators.required]),
-      AnswerId: new FormControl('', [Validators.required]),
-      Answers: this.fb.array([],[Validators.required]),
-    });
-
   }
-  // thêm đáp án cho câu hỏi 
+
+  // thêm đáp án cho câu hỏi
   addAnswer(Text = '') {
     //random id answer
     let randomId = require('random-id');
@@ -94,11 +90,20 @@ export class FormComponent implements OnInit {
     // gán object vào một biến
     let data = this.customerInfo.value;
     let code = this.code;
-    //post dữ liệu vào data
-    this.QuizService.addQuiz(data, code).subscribe((response) => {
-      alert('thêm thành công');
-      this.router.navigate(['/admin/subject/quiz/' + code]);
-    });
+    if (data.id != null) {
+      console.log('put', data);
+      this.QuizService.update(data.id, code, data).subscribe((data) => {
+        alert('sữa thành công thành công');
+        this.router.navigate(['/admin/subject/quiz/' + code]);
+      });
+    } 
+      //post dữ liệu vào data quiz
+      console.log('post', data);
+      this.QuizService.addQuiz(data, code).subscribe((response) => {
+        alert('thêm thành công');
+        this.router.navigate(['/admin/subject/quiz/' + code]);
+      });
+    
   }
 
   //get đáp án đúng

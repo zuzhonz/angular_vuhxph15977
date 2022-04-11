@@ -5,7 +5,6 @@
             <div class="col-md-12 col-lg-12">
                 <h4 class="mb-3">Customer Information</h4>
 
-                {{customerInfo.value | json}}
                 <form [formGroup]="customerInfo" (ngSubmit)="createCustomerInfo()" class="needs-validation">
                     <div class="row g-3 m-6">
                         <div class="col-sm-6">
@@ -56,6 +55,9 @@
                                                 <div class="col-2">
                                                     <input type="number" formControlName="id" class="form-control" placeholder="AnswerId">
                                                 </div>
+
+
+
                                                 <div class="col-5">
                                                     <input type="text" formControlName="Text" class="form-control" placeholder="Answers Text">
                                                     <div class="alert alert-danger mt-3" role="alert" *ngIf="this.answer.controls['Text'].hasError('required') && this.answer.controls['Text'].touched ">
@@ -64,7 +66,7 @@
                                                 </div>
 
                                                 <div class="col-2 mt-2">
-                                                    <input type="radio" (click)="h(this.answer.controls.id.value)" name="is_correct" class="form-radio"> Đáp án đúng
+                                                    <input type="radio" (click)="h(this.answer.controls.id.value)" [checked]="this.answer.controls.id.value == customerInfo.value.AnswerId" name="is_correct" class="form-radio"> Đáp án đúng
                                                 </div>
                                                 <div class="col-3 mt-2">
                                                     <i class="fa-solid fa-trash-can" (click)="delAnswer(i)"></i>
