@@ -22,7 +22,7 @@
                         <div class="answer col-md-6 " *ngFor="let answer of item.Answers ">
 
                             <div class="form-check">
-                                <input class="form-check-input" (change)="choose(item.Id,answer.Id);" type="radio" [name]="item.Id" [id]="answer.Id">
+                                <input class="form-check-input" (change)="choose(item.id,answer.id);" type="radio" [name]="item.id" [id]="answer.id">
                                 <label class="form-check-label" for="flexRadioDisabled">
                                    {{answer.Text}}
                                 </label>

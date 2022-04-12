@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute,Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { QuizService } from 'src/app/services/quiz.service';
+import { StudentService } from 'src/app/services/student.service';
 
 @Component({
   selector: 'app-quiz',
@@ -9,23 +10,32 @@ import { QuizService } from 'src/app/services/quiz.service';
   styleUrls: ['./quiz.component.css'],
 })
 export class QuizComponent implements OnInit {
-  [x: string]: any;
 
   quiz: Array<any> = [];
   user_quiz: Array<any> = [];
+  id_stu : number = 0
   score: number = 0;
+  code: any = this.route.snapshot.paramMap.get('code');
+
   // isScore : boolean = false;
 
   constructor(
     private route: ActivatedRoute,
-    private QuizService: QuizService
+    private router : Router,
+    private QuizService: QuizService,
+    private studentService : StudentService,
+    private auth : AuthService
   ) {}
 
   ngOnInit() {
-    let code = this.route.snapshot.paramMap.get('code');
-    this.QuizService.list(code).subscribe((data) => {
+    this.QuizService.list(this.code).subscribe((data) => {
       this.quiz = data.sort(() => (Math.random() < 0.5 ? -1 : 1)).slice(0, 10);
-    });
+    }); 
+   
+    // lấ  id  tài khoản   và gán cho id_stu
+    this.auth.logginUser.subscribe((data) => {
+       this.id_stu = data.id;
+    })
   }
 
   choose(qId: number, aId: number) {
@@ -54,17 +64,29 @@ export class QuizComponent implements OnInit {
     //đếm đáp án đúng
     let correctAnswers = 0;
     this.user_quiz.forEach((ans: any) => {
-      let question = this.quiz.find((item: any) => item.Id == ans.qId);
+      let question = this.quiz.find((item: any) => item.id == ans.qId);
       if (question.AnswerId == ans.aId) {
         correctAnswers++;
       }
     });
-
-   
-
     // tính  điểm của mỗi câu hỏi so với số câu hỏi
     const score = (correctAnswers * 10) / this.quiz.length;
-    this.score = score;
-    console.log(score);
+    this.score = score; 
+
+     //lấy id của tài khoãn đã đăng nhập  số
+      
+     
+    this.studentService.find(this.id_stu).subscribe((stu: any)=> { 
+      //gán giá trị mới cho marks 
+      stu.marks[this.code] = score.toFixed(2);
+      console.log(stu);
+       
+      //update marks của student
+      this.studentService.update(stu,this.id_stu).subscribe(data => {
+        this.router.navigate(['/result', data.id, this.code]);
+      }) 
+
+      // debugger
+    })
   }
 }

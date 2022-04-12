@@ -45,8 +45,9 @@ export class AdQuizComponent implements OnInit {
     if(confirm("Are you sure to delete quizz ")){
       this.QuizService.delete(id, code).subscribe(data =>{
         window.location.reload()
+       alert('Quiz deleted successfully')
+
      })
-     alert('Quiz deleted successfully')
     }
     
       

@@ -1,24 +1,27 @@
 {
   "students": [
     {
-      "id": 1,
-      "name": "Hoàng Xuân Vũ",
+      "name": "Hoàng Xuân Vũ PH 1 5 9 7 7",
       "googleId": "100686981343131313000",
       "email": "vuhxph15977@fpt.edu.vn",
       "avatar": "https://lh3.googleusercontent.com/a-/AOh14Ggve6mDDEQ-u1F8e__TeU1s2V7-L5KIOp_pUKjBuA=s96-c",
       "marks": {
-        "LAYO": "3.00"
+        "WEB207": "10.00",
+        "HTCS": "8.00"
       },
       "roles": [
         "admin"
-      ]
+      ],
+      "id": 1
     },
     {
       "name": "Vũ Hoàng",
       "googleId": "106031313524275745254",
       "email": "skyhoangvu248@gmail.com",
       "avatar": "https://lh3.googleusercontent.com/a/AATXAJz6QsSkgXeaEoQHceQN08KQK3-BYWrb74yp2uJA=s96-c",
-      "marks": {},
+      "marks": {
+        "WEB207": "10.00"
+      },
       "roles": [
         "member"
       ],
@@ -1929,20 +1932,6 @@
           "Text": "Maven SDK"
         }
       ]
-    },
-    {
-      "Text": "thienth test add question",
-      "Marks": 1,
-      "AnswerId": "",
-      "Answers": [],
-      "id": 25183
-    },
-    {
-      "Text": "thienth test add question",
-      "Marks": 1,
-      "AnswerId": "",
-      "Answers": [],
-      "id": 25184
     }
   ],
   "ADBS": [
@@ -37886,33 +37875,17 @@
   "WEB207": [
     {
       "id": 1,
-      "Text": "ai code trang này",
+      "Text": "số nào bằng số 11 ",
       "Marks": 1,
-      "AnswerId": 355343,
+      "AnswerId": 501744,
       "Answers": [
         {
-          "id": 355343,
-          "Text": "hoàng vũ đẹp trai "
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "Text": "câu trả lời 2 ",
-      "Marks": 1,
-      "AnswerId": 763117,
-      "Answers": [
-        {
-          "id": 763117,
+          "id": 501744,
           "Text": "11"
         },
         {
-          "id": 244065,
-          "Text": "câu trả lời 2"
-        },
-        {
-          "id": 776866,
-          "Text": "câu trả lời 3"
+          "id": 201890,
+          "Text": "111"
         }
       ]
     }

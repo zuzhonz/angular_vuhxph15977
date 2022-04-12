@@ -9,7 +9,8 @@
         border: none;
     }
     
-    th {
+    th,
+    td {
         text-align: center
     }
     
@@ -32,10 +33,8 @@
                 <th>Stt</th>
                 <th>User Name </th>
                 <th>Email</th>
-                <th width="230px">googleId</th>
-                <!-- <th>Gender</th>
-                <th>Birth Date</th>
-                <th>School fee</th> -->
+                <th width="230px">Avatar</th>
+                <th>Role</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -44,19 +43,14 @@
                 <th scope="row">{{i+1}}</th>
                 <td>{{stu.name}}</td>
                 <td>{{stu.email}}</td>
-                <td class="passH" width="230px">
-                    <div> <input [value]="stu.googleId" [type]="showPass ? 'text' : 'password'" disabled /></div>
-                    <div>
-                        <a (click)="password()" *ngIf="showPass== false"> <i class="fa-solid fa-eye"></i> </a>
-                        <a (click)="password()" *ngIf="showPass "> <i class="fa-solid fa-eye-slash"></i> </a>
-                    </div>
+                <td><img [src]="stu.avatar" alt=""></td>
+                <td>
+                    <h6>{{stu.roles}}</h6>
                 </td>
-                <!-- <td>{{stu.gender | getGender}}</td>
-                <td>{{stu.birthday | date : "dd/MM/YYYY" }}</td>
-                <td>{{stu.schoolfee | getMoney }}</td> -->
+
                 <td class="action">
                     <a class="btn btn-primary"> Edit</a>
-                    <a class="btn btn-danger"> Delete </a>
+                    <a class="btn btn-danger" (click)="delStudent(stu.id)">Delete </a>
                 </td>
             </tr>
 

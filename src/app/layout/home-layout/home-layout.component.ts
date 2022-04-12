@@ -19,8 +19,6 @@ export class HomeLayoutComponent implements OnInit {
       if(user.email != undefined && user.googleId != undefined){
         this.isLoggedIn = true;
         this.loggedInUser = user  
-        
-        
       }
     
       

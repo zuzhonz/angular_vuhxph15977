@@ -44,11 +44,10 @@ export class FormComponent implements OnInit {
       this.QuizService.question(id, code).subscribe((data) => {
         // trả về dữ Text,Marks AnswerId
         this.customerInfo.get('id').setValue(data.id);
-
         this.customerInfo.get('Text').setValue(data.Text);
         this.customerInfo.get('Marks').setValue(data.Marks);
         this.customerInfo.get('AnswerId').setValue(data.AnswerId);
-        // trả về dữ liệu câu hỏi
+        // trả về dữ liệu Answers
         const grAns = this.customerInfo.controls.Answers as FormArray;
         data.Answers.forEach((item: any, index: any) => {
           grAns.push(

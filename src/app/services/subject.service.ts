@@ -12,6 +12,10 @@ export class SubjectService {
 
   list(): Observable<any>{
     return this.http.get<any>(environment.subjects_api);
+  } 
+
+  get(code:any): Observable<any>{
+     return this.http.get<any>(`${environment.subjects_api}?Code_like=${code}`)
   }
 
   search(keyword:any): Observable<any>{

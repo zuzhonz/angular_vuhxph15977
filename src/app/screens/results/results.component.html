@@ -1,0 +1,24 @@
+<div class="row m-3 mb-3">
+    <div [class]="passQuiz" *ngIf="user">
+        <div class="card-header"> {{nameSub}} </div>
+        <div class="card-body">
+            <h5 class="card-title ">Student : {{user.name}} </h5>
+            <p class="card-text">your result is: {{score}} </p>
+            <p class="card-text">your subject code: {{code}} </p>
+        </div>
+        <div class="card-footer">{{user.email}}</div>
+
+    </div>
+    <div class="card col-3 text-primary border-primary m-1 ">
+        <div class="card-header"> {{nameSub}} </div>
+        <div class="card-body">
+            <!-- <h5 class="card-title ">Student : {{user.name}} </h5>
+            <p class="card-text">your result is: {{score}} </p>
+            <p class="card-text">your subject code: {{code}} </p> -->
+            <img [src]="'/assets/logos/logos/'+ imgSub" alt="" style="margin:0px 70px" width="150">
+        </div>
+        <div class="card-footer">{{code}}</div>
+
+
+    </div>
+</div>

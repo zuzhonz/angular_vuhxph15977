@@ -1,3 +1,4 @@
+import { ResultsComponent } from './screens/results/results.component';
 import { RoleGuard } from './helpers/role.guard';
 import { CanActiveGuard } from './helpers/can-active.guard';
 import { AdHomeComponent } from './screens/admin/ad-home/ad-home.component';
@@ -26,6 +27,7 @@ const routes: Routes = [
       { path: 'subject', component: SubjectComponent },
       { path: 'student', component: StudentComponent },
       { path: 'quiz/:code', component: QuizComponent , canActivate: [CanActiveGuard]},
+      { path: 'result/:id_stu/:code', component: ResultsComponent , canActivate: [CanActiveGuard]},
     ],
   },
   { path: 'login', component: LoginComponent },

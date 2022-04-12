@@ -17,12 +17,10 @@ export class AdStudentComponent implements OnInit {
       this.student = data;
     });
     this.search
+    this.delStudent
   }
 
   
-  password() {
-    this.showPass = !this.showPass;
-  }
 
   search(e: any){
     let keyword = e.target.value
@@ -30,5 +28,12 @@ export class AdStudentComponent implements OnInit {
     this.StudentService.search(keyword).subscribe((data) => {
        this.student  = data;
     })
+  }
+
+  delStudent(id:Number){
+     this.StudentService.delete(id).subscribe(res => {
+        window.location.reload()
+        alert('Student deleted successfully')
+     })
   }
 }
