@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 // base api url
- const B_A_U = "http://localhost:3000/"
+ const B_A_U = "https://62d8e5fb9088313935969acd.mockapi.io/"
+//  const B_A_U = "http://localhost:3000/"
 //
 
 export const environment = {

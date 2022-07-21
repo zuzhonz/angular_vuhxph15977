@@ -25,7 +25,7 @@ export class FormComponent implements OnInit {
   ) {}
 
   customerInfo: any = this.fb.group({
-    id: new FormControl(),
+    id: new FormControl(''),
     Text: new FormControl('', [Validators.required, Validators.minLength(4)]),
     Marks: new FormControl('', [Validators.required]),
     AnswerId: new FormControl('', [Validators.required]),
@@ -40,7 +40,7 @@ export class FormComponent implements OnInit {
     let id = this.id;
     let code = this.code;
 
-    if (id != null) {
+    if (id !== '') {
       this.QuizService.question(id, code).subscribe((data) => {
         // trả về dữ Text,Marks AnswerId
         this.customerInfo.get('id').setValue(data.id);
@@ -89,19 +89,21 @@ export class FormComponent implements OnInit {
     // gán object vào một biến
     let data = this.customerInfo.value;
     let code = this.code;
-    if (data.id != null) {
+    if (data.id !== '') {
       console.log('put', data);
       this.QuizService.update(data.id, code, data).subscribe((data) => {
         alert('sữa thành công thành công');
         this.router.navigate(['/admin/subject/quiz/' + code]);
       });
-    } 
+    }else{
       //post dữ liệu vào data quiz
       console.log('post', data);
       this.QuizService.addQuiz(data, code).subscribe((response) => {
         alert('thêm thành công');
         this.router.navigate(['/admin/subject/quiz/' + code]);
       });
+    }   
+      
     
   }
 
