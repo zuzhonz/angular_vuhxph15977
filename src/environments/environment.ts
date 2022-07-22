@@ -8,7 +8,7 @@
 //
 
 export const environment = {
-  production: false,
+  production: true,
 
   //google cloud login client id config 
   GOOGLE_CLIENT_ID: "983733345847-dc3vtpllmi9s8gkurdvs3i1r3c84c0o8.apps.googleusercontent.com",
